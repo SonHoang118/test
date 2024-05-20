@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        box-sizing: border-box;
+    }
+
+    .nav {
+        display: flex;
+        font-size: 25px;
+        padding: 20px;
+        justify-content: space-between;
+        position: relative;
+        border-bottom: 1px solid #5e5e5e;
+    }
+
+    .header_right {
+        display: flex;
+        gap: 25px;
+    }
+
+    .header .logo {
+        position: absolute;
+        width: 160px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -13px;
+    }
+
+    .banner {
+        width: 100%;
+    }
+
+    .slider {
+        position: relative;
+    }
+
+    .slider .btn {
+        width: 100%;
+        /* height: 50px; */
+        /* background-color: aqua; */
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 15px;
+        /* background-color: #fff; */
+        /* width: 30px;height: 30px; */
+        display: flex;
+        justify-content: space-between;
+        font-size: 27px;
+    }
+
+    .btn div {
+        width: 40px;
+        height: 40px;
+        background-color: #f3f3f3c9;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 50%;
+    }
+
+    .slider .process {
+        width: 80%;
+        /* text-align: center; */
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        /* height: 10px;
+        background-color: aqua; */
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .slider .process span {
+        display: inline-block;
+        width: 50px;
+        height: 5px;
+        background-color: rgba(247, 247, 247, 0.856);
+        border-radius: 3px;
+    }
+
+    .action_group {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(251 251 251);
+        border-radius: 3px;
+        box-shadow: 0 0 4px 1px #7c7c7c3b;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+        gap: 10px;
+        color: #5e5e5e;
+        font-size: 10px;
+    }
+
+    .action_group i {
+        font-size: 25px;
+    }
+
+    .action_group img {
+        width: 25px;
+    }
+
+    .container {
+        margin: 30px 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 25px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer .chat_plugin {
+        position: absolute;
+        bottom: -220px;
+        right: 25px;
+        font-size: 30px;
+        color: white;
+        width: 60px;
+        height: 60px;
+        background-color: #ff436c;
+        box-shadow: 0 0 4px 1px #7c7c7c3b;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 60px;
+    }
+
+    .parameter img {
+        transform: translateY(2px);
+        margin-right: 3px;
+    }
+
+    .order_list {
+        width: 90%;
+        height: 500px;
+        /* background-color: aqua; */
+        border: 3px solid #ffc964;
+        box-shadow: 0 0 4px 1px #7c7c7c3b;
+        margin: auto;
+        border-radius: 8px;
+    }
+
+    .list_header {
+        width: 100%;
+        height: 50px;
+        /* background-color: aqua; */
+        display: flex;
+        justify-content: space-evenly;
+        font-size: 12px;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .list_header div {
+        background-color: #f4f4f4;
+        padding: 7px 8px;
+        /* line-height: ; */
+        display: flex;
+        align-items: center;
+        border-radius: 14px;
+    }
+
+    .list_header img {
+        width: 24px;
+        transform: translate(-2px, -2px);
+    }
+
+    .list_header div:first-child img {
+        width: 19px;
+    }
+
+    .list_header div:last-child {
+        background-color: #ffc964;
+    }
+
+    .list_body {
+        width: 100%;
+        height: 300px;
+        /* background-color: aqua; */
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+        flex-direction: column;
+        padding-top: 30px;
+        color: #5e5e5e;
+        gap: 20px;
+    }
+
+    .list_item {
+        width: 90%;
+        height: 80px;
+        /* background-color: orange; */
+        border: 2px solid #ffc964;
+        border-radius: 5px;
+        padding: 10px;
+        display: flex;
+        gap: 20px;
+    }
+
+    .list_item img {
+        width: 60px;
+        height: 60px;
+        background-color: red;
+        border-radius: 3px;
+    }
+    .list_item .right{
+        /* width: 200px; */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .list_item .name {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .infor{
+        display: flex;
+        /* justify-content: space-between; */
+        font-size: 10px;
+        gap: 20px;
+    }
+    .infor i{
+        font-size: 10px;
+        transform: translate(-1px,-0px);
+    }
+</style>
+
+<body style="position: relative;">
+    <div class="header">
+        <div class="nav">
+            <img src="./logo.png" alt="" class="logo">
+
+            <div class="header_left"><i class="fa-solid fa-bars"></i></div>
+            <div class="header_right">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+        <!-- <div class="slider">
+            <img class="banner" src="./banner.jpg" alt="">
+            <div class="btn">
+                <div class="prev"><i class="fa-solid fa-chevron-left"></i></div>
+                <div class="next"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+            <div class="process">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div> -->
+    </div>
+    <div class="body">
+        <div class="container">
+
+            <!-- <div class="action_group">
+                <img src="./png/004-menu.png" alt="">
+                <span>Quản lý thực đơn</span>
+            </div>
+            <div class="action_group">
+                <img src="./png/003-harvest.png" alt="">
+                <span>Nguyên liệu</span>
+            </div> -->
+            <!-- <div class="action_group">
+                <i class="fa-solid fa-desktop"></i>
+                <span>Đặt máy</span>
+            </div>
+            <div class="action_group">
+                <i class="fa-solid fa-star"></i>
+                <span>Phản hồi</span>
+            </div>
+            <div class="action_group">
+                <i class="fa-solid fa-money-bills"></i>
+                <span>Thanh toán</span>
+            </div>
+            <div class="action_group">
+                <i class="fa-solid fa-circle-question"></i>
+                <span>Trợ giúp</span>
+            </div> -->
+
+        </div>
+        <div class="order_list">
+            <div class="list_header">
+                <div><img src="./png/002-order.png" alt="">Đơn món</div>
+                <div><img src="./png/005-cooking.png" alt="">Đang nấu</div>
+                <div><img src="./png/001-fast-delivery.png" alt="">Đã xong</div>
+            </div>
+            <div class="list_body">
+                <div class="list_item">
+                    <img style="transform: rotate(-90deg) scale(1, -1);" src="https://afamilycdn.com/2019/2/17/yuan4927d0c899ec03e464c96488785a2e23-15504083533832126180888.jpeg" alt="">
+                    <div class="right">
+                        <div class="name">Mì tôm trứng</div>
+                        <div class="infor">
+                            <div class="count">số lượng 1</div>
+                            <div class="id"><i class="fa-solid fa-desktop"></i>máy 01</div>
+                            <div class="time"><i class="fa-regular fa-clock"></i>10 phút trước</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list_item">
+                    <img style="transform: rotate(0deg) scale(1, 1);" src="https://assets.unileversolutions.com/v1/1187779.jpg" alt="">
+                    <div class="right">
+                        <div class="name">Cơm rang</div>
+                        <div class="infor">
+                            <div class="count">số lượng 1</div>
+                            <div class="id"><i class="fa-solid fa-desktop"></i>máy 05</div>
+                            <div class="time"><i class="fa-regular fa-clock"></i>5 phút trước</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list_item">
+                    <img style="transform: rotate(0deg) scale(1, 1);" src="https://tea-3.lozi.vn/v1/ship/resized/losupply-tay-ninh-thi-xa-tay-ninh-tay-ninh-1648799875010710655-nuoc-ngot-coca-cola-lon-320ml-0-1658289661?w=480&type=o" alt="">
+                    <div class="right">
+                        <div class="name">Coca cola</div>
+                        <div class="infor">
+                            <div class="count">số lượng 2</div>
+                            <div class="id"><i class="fa-solid fa-desktop"></i>máy 01</div>
+                            <div class="time"><i class="fa-regular fa-clock"></i>3 phút trước</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <!-- <div class="chat_plugin"><i class="fa-solid fa-comment"></i></div> -->
+    </div>
+</body>
+
+</html>

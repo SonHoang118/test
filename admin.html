@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        box-sizing: border-box;
+    }
+    body{
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .nav {
+        display: flex;
+        font-size: 25px;
+        padding: 20px;
+        justify-content: space-between;
+        position: relative;
+        border-bottom: 1px solid #5e5e5e;
+        /* background-image: url('./headerImg.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white; */
+    }
+
+    .header_right {
+        display: flex;
+        gap: 25px;
+    }
+
+    .header .logo {
+        position: absolute;
+        width: 160px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -13px;
+    }
+
+    .banner {
+        width: 100%;
+    }
+
+    .slider {
+        position: relative;
+    }
+
+    .slider .btn {
+        width: 100%;
+        /* height: 50px; */
+        /* background-color: aqua; */
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 15px;
+        /* background-color: #fff; */
+        /* width: 30px;height: 30px; */
+        display: flex;
+        justify-content: space-between;
+        font-size: 27px;
+    }
+
+    .btn div {
+        width: 40px;
+        height: 40px;
+        background-color: #f3f3f3c9;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 50%;
+    }
+
+    .slider .process {
+        width: 80%;
+        /* text-align: center; */
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        /* height: 10px;
+        background-color: aqua; */
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .slider .process span {
+        display: inline-block;
+        width: 50px;
+        height: 5px;
+        background-color: rgba(247, 247, 247, 0.856);
+        border-radius: 3px;
+    }
+
+    .action_group {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(251 251 251);
+        border-radius: 3px;
+        box-shadow: 0 0 4px 1px #7c7c7c3b;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+        gap: 10px;
+        color: #5e5e5e;
+        font-size: 10px;
+    }
+
+    .action_group i {
+        font-size: 25px;
+    }
+    .action_group img {
+        width: 25px;
+    }
+
+    .container {
+        margin: 30px 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 25px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer .chat_plugin {
+        position: absolute;
+        bottom: -220px;
+        right: 25px;
+        font-size: 30px;
+        color: white;
+        width: 60px;
+        height: 60px;
+        background-color: #ff436c;
+        box-shadow: 0 0 4px 1px #7c7c7c3b;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 60px;
+    }
+
+
+
+
+    .chart-container {
+        /* display: flex; */
+        /* justify-content: center;
+        align-items: center; */
+        /* margin: 30px; */
+        /* height: 100vh; */
+    }
+
+    .chart-container_circle div {
+        display: flex;
+    }
+
+    .pie-chart {
+        width: 250px;
+        height: 250px;
+        background: conic-gradient(rgb(136, 255, 166) 0% 45%, rgb(255, 93, 174) 45% 65%,
+                /* 60% là tỷ lệ nam */
+                rgb(90, 208, 255) 65% 100%
+                /* 40% là tỷ lệ nữ */
+            );
+        border-radius: 50%;
+        position: relative;
+    }
+
+    .pie-chart::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 80%;
+        height: 80%;
+        background: white;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .legend {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .legend div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 14px;
+        color: #5e5e5e;
+    }
+
+    .legend div span {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+
+    .legend .food span {
+        background: rgb(90, 208, 255);
+    }
+
+    .legend .may span {
+        background: rgb(136, 255, 166);
+    }
+
+    .legend .room span {
+        background: rgb(255, 93, 174);
+    }
+
+    .statistical {
+        margin: 30px 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 30px;
+    }
+
+    .parameter {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        color: #5e5e5e;
+        font-size: 13px;
+    }
+
+    .parameter span {
+        color: #414141;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .parameter i {
+        margin-right: 3px;
+    }
+
+    .parameter img {
+        transform: translateY(2px);
+        margin-right: 3px;
+    }
+
+    .chart-container {
+        width: 100%;
+        /* height: 400px; */
+        margin: 10px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        /* transform: translateY(-80px); */
+    }
+</style>
+
+<body style="position: relative;">
+    <div class="header">
+        <div class="nav">
+            <img src="./logo.png" alt="" class="logo">
+            <div class="header_left"><i class="fa-solid fa-bars"></i></div>
+            <div class="header_right">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+        <!-- <div class="slider">
+            <img class="banner" src="./banner.jpg" alt="">
+            <div class="btn">
+                <div class="prev"><i class="fa-solid fa-chevron-left"></i></div>
+                <div class="next"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+            <div class="process">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div> -->
+    </div>
+    <div class="body">
+        <div class="statistical">
+            <div class="chart-container_circle">
+                <div>
+                    <div class="pie-chart"></div>
+                    <div class="legend">
+                        <div class="food"><span></span>Đồ ăn</div>
+                        <div class="may"><span></span>Máy</div>
+                        <div class="room"><span></span> Phòng</div>
+                        <!-- <div class="female"><span></span> Nữ</div>
+                        <div class="female"><span></span> Nữ</div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="parameter">
+                <div class="user"><i class="fa-solid fa-user"></i>số tài khoản <span>123100</span></div>
+                <div class="user"><i class="fa-solid fa-desktop"></i></i>số lượng máy <span>150</span></div>
+                <div class="user"><img src="./png/003-room.png" alt="">số lượng phòng <span>30</span></div>
+                <div class="user"><img src="./png/001-manager.png" alt="">số nhân viên <span>70</span></div>
+                <div class="user"><img src="./png/002-chef.png" alt="">số đầu bếp <span>10</span></div>
+            </div>
+            <div class="chart-container">
+                <canvas id="lineChart"></canvas>
+            </div>
+            <script>
+                const ctx = document.getElementById('lineChart').getContext('2d');
+                const lineChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['T1', 'T2', 'T3', 'T4', 'T5'],
+                        datasets: [{
+                            label: 'Doanh thu',
+                            data: [140, 120, 70, 150, 190],
+                            borderColor: 'rgb(255 119 53)',
+                            backgroundColor: 'transparent',
+                            fill: true,
+                            tension: 0.1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: false  // Ẩn phần chú thích
+                            }
+                        },
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Tháng (2024)'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Doanh thu (triệu VNĐ)'
+                                },
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+        <div class="container">
+
+            <div class="action_group">
+                <img src="./png/001-manager.png" alt="">
+                <span>Quản lý nhân viên</span>
+            </div>
+            <div class="action_group">
+                <i class="fa-solid fa-desktop"></i>
+                <span>Quản lý máy</span>
+            </div>
+            <div class="action_group">
+                <i class="fa-solid fa-burger"></i>
+                <span>Quản ký nhà bếp</span>
+            </div>
+            <div class="action_group">
+                <img src="./png/003-room.png" alt="">
+                <span>Quản lý phòng</span>
+            </div>
+            <div class="action_group">
+                <i class="fa-solid fa-user"></i>
+                <span>Quản lý khách hàng</span>
+            </div>
+            <!-- <div class="action_group">
+                <i class="fa-solid fa-circle-question"></i>
+                <span>Trợ giúp</span>
+            </div> -->
+
+        </div>
+    </div>
+    <div class="footer">
+        <div class="chat_plugin"><i class="fa-solid fa-comment"></i></div>
+    </div>
+</body>
+
+</html>
